@@ -17,20 +17,27 @@ function normalizePageHash() {
   window.location.hash = PAGE_TIMELINE
   return PAGE_TIMELINE
 }
+
+function goTo(page) {
+    curentPage.value = page
+}
 </script>
 
 <template>
 
- <TheHeader />
+ <TheHeader 
+    @go-to-timiline="goTo(PAGE_TIMELINE)"
+    @go-to-proges="goTo(PAGE_ACTIVITIES)"
+ />
  <main class="flex flex-grow flex-col">
     <TheActivites v-show="curentPage === PAGE_ACTIVITIES"/>
     <TheProgres v-show="curentPage === PAGE_PROGRESS"/>
     <TheTimeLine v-show="curentPage === PAGE_TIMELINE"/>
 </main>
   
-<TheNav 
+<TheNav
     :current-page="curentPage"
-    @navigate="curentPage = $event"
+    @navigate="goTo($event)"
 />
 </template>
 
