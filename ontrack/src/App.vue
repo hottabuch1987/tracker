@@ -1,14 +1,36 @@
 <script setup>
+import { ref } from 'vue'
 import TheHeader from '@/components/TheHeader.vue'
 import TheNav from '@/components/TheNav.vue'
+import TheActivites from '@/pages/TheActivites.vue'
+import TheProgres from '@/pages/TheProgres.vue'
+import TheTimeLine from '@/pages/TheTimeLine.vue'
+import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants'
 
+const curentPage = ref(normalizePageHash())
+function normalizePageHash() {
+  const hash = window.location.hash.slice(1)
+
+  if ([].includes(hash)){
+    return hash
+  }
+  window.location.hash = PAGE_TIMELINE
+  return PAGE_TIMELINE
+}
 </script>
 
 <template>
+
  <TheHeader />
- <main class="flex flex-grow flex-col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos veniam dicta vel nemo error deserunt nulla quo natus assumenda iste, inventore vero deleniti ipsa, optio harum voluptatem! Ipsa sequi laboriosam tempora officiis rerum laudantium earum modi. Deleniti sunt nemo odit minus? Repudiandae facere corporis, ex quos officia rem maxime quidem modi odio totam explicabo unde accusantium cum sed. Earum nobis nihil enim inventore velit exercitationem dolorum, laborum, provident error cumque cum animi vel praesentium odio, consequatur sint! Ipsum totam quae dolore dolorem, et voluptatum molestias explicabo, facilis ab dolores voluptas maiores tempore excepturi quibusdam culpa quam! Tenetur cupiditate quod odio? Corrupti accusamus repellendus eaque veritatis id tenetur ipsa at, quaerat fugit eos perspiciatis quibusdam aliquam quis. Adipisci, non. Mollitia delectus id atque voluptatum sed provident laudantium veritatis ducimus ab, eius dignissimos alias amet, cumque voluptates praesentium pariatur voluptate? Magnam, quae!
- </main>
+ <main class="flex flex-grow flex-col">
+    <TheActivites v-show="curentPage === PAGE_ACTIVITIES"/>
+    <TheProgres v-show="curentPage === PAGE_PROGRESS"/>
+    <TheTimeLine v-show="curentPage === PAGE_TIMELINE"/>
+</main>
   
-<TheNav />
+<TheNav 
+    :current-page="curentPage"
+    @navigate="curentPage = $event"
+/>
 </template>
 
