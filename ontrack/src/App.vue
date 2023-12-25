@@ -6,17 +6,10 @@ import TheActivites from '@/pages/TheActivites.vue'
 import TheProgres from '@/pages/TheProgres.vue'
 import TheTimeLine from '@/pages/TheTimeLine.vue'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants'
+import { normalizePageHash } from '@/functions'
 
 const curentPage = ref(normalizePageHash())
-function normalizePageHash() {
-  const hash = window.location.hash.slice(1)
 
-  if ([].includes(hash)){
-    return hash
-  }
-  window.location.hash = PAGE_TIMELINE
-  return PAGE_TIMELINE
-}
 
 function goTo(page) {
     curentPage.value = page
@@ -36,7 +29,7 @@ function goTo(page) {
 </main>
   
 <TheNav
-    :current-page="curentPage"
+    :curent-page="curentPage"
     @navigate="goTo($event)"
 />
 </template>
