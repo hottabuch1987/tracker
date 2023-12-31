@@ -1,5 +1,5 @@
 <script setup>
-
+import { ref } from 'vue'
 import { isTimeLineItemValid } from '../validators'
 import BaseSelect from './BaseSelect.vue';
 
@@ -26,7 +26,7 @@ const options = [
     {value: 3, label: 'Training'},
 ]
 
-const selectedActivityId = 3
+const selectedActivityId = ref(1)
 
 </script>
 
@@ -35,8 +35,13 @@ const selectedActivityId = 3
     <a href="#" :class="hourLinkClasess">
         {{ timelineItem.hour }}:00
     </a>
-    <BaseSelect :selected="selectedActivityId" :options="options" placeholder="Rest"/>
-    <div class="flex gap-2">
+    <BaseSelect 
+        :selected="selectedActivityId" 
+        :options="options" 
+        placeholder="Rest"
+        @select="selectedActivityId = $event"
+    />
+    <!-- <div class="flex gap-2">
         
         <select name="" id="" class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl">
             <option selected disabled value="">Rest</option>
@@ -44,7 +49,7 @@ const selectedActivityId = 3
                 {{ label }}
             </option>
         </select>
-    </div>
+    </div> -->
     
 </li>
         
