@@ -10,6 +10,7 @@ export function normalizePageHash() {
   }
 export function generateTimeLineItems() {
     const timelineItems = []
+    
     for (let hour = 0; hour < HOURS_IN_DAY; hour++) {
         timelineItems.push({ hour })
     }

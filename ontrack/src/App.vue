@@ -10,12 +10,12 @@ import {  PAGE_PROGRESS } from './constants'
 import {  PAGE_ACTIVITIES } from './constants'
 import { normalizePageHash, generateTimeLineItems } from '@/functions'
 
-const curentPage = ref(normalizePageHash())
+const currentPage = ref(normalizePageHash())
 
 const timelineItems = generateTimeLineItems()
 
 function goTo(page) {
-    curentPage.value = page
+    currentPage.value = page
 }
 </script>
 
@@ -26,13 +26,13 @@ function goTo(page) {
     @go-to-proges="goTo(PAGE_ACTIVITIES)"
  />
  <main class="flex flex-grow flex-col">
-    <TheActivites v-show="curentPage === PAGE_ACTIVITIES"/>
-    <TheProgres v-show="curentPage === PAGE_PROGRESS"/>
-    <TheTimeLine v-show="curentPage === PAGE_TIMELINE" :timeline-items="timelineItems"/>
+    <TheActivites v-show="currentPage === PAGE_ACTIVITIES"/>
+    <TheProgres v-show="currentPage === PAGE_PROGRESS"/>
+    <TheTimeLine v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems"/>
 </main>
   
 <TheNav
-    :curent-page="curentPage"
+    :current-page="currentPage"
     @navigate="goTo($event)"
 />
 </template>

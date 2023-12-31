@@ -3,9 +3,15 @@ import { XMarkIcon } from '@heroicons/vue/24/outline';
 import BaseButton from './BaseButton.vue'
 
 
-
+// defineProps(['options', 'placeholder', 'selected'])
+// детальная натация определяи пропсов
 defineProps({
-    delected: Number,
+    selected: Number,
+
+    placeholder: {
+        required: true,
+        type: String
+    },
     options: {
         required: true,
         type: Array,
@@ -13,10 +19,6 @@ defineProps({
             return options.every(({ value, label}) => typeof value === 'number' && typeof label === 'string')
         }
     },
-    placeholder: {
-        required: true,
-        type: String
-    }
 })
 </script>
 <template>
@@ -27,7 +29,10 @@ defineProps({
             
             <select class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl">
                 <option selected disabled value="">{{ placeholder }}</option>
-                <option v-for="{value, label} in options" :key="value" :value="value" :selected="value === selected">
+                <option v-for="{value, label} in options" 
+                    :key="value" :value="value" 
+                    :selected="value === selected"
+                >
                     {{ label }}
                 </option>
 
