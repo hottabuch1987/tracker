@@ -22,8 +22,7 @@ function goTo(page) {
 <template>
 
  <TheHeader 
-    @go-to-timiline="goTo(PAGE_TIMELINE)"
-    @go-to-proges="goTo(PAGE_ACTIVITIES)"
+    @navigate="goTo($event)"
  />
  <main class="flex flex-grow flex-col">
     <TheActivites v-show="currentPage === PAGE_ACTIVITIES"/>
