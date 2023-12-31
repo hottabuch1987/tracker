@@ -15,7 +15,7 @@ const emit = defineEmits(['navigate'])
     <NavItem 
       v-for="icon, page in NAV_ITEMS" :key="page"
       :href="`#${page}`"
-      :class="{'bg-gray-400 pointer-events-none': page === curentPage}"
+      :class="{'bg-gray-400 pointer-events-none': page === currentPage}"
       @click="emit('navigate', page)"
     >
 

@@ -9,9 +9,9 @@ export function normalizePageHash() {
     return PAGE_TIMELINE
   }
 export function generateTimeLineItems() {
-    const timeLineItems = []
+    const timelineItems = []
     for (let hour = 0; hour < HOURS_IN_DAY; hour++) {
-        timeLineItems.push({ hour })
+        timelineItems.push({ hour })
     }
-    return timeLineItems
+    return timelineItems
 }
