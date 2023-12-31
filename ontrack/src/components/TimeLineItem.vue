@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { isTimeLineItemValid } from '../validators'
 import BaseSelect from './BaseSelect.vue';
+import TimeLineHour from './TimeLineHour.vue';
 
-
-const props = defineProps({
+defineProps({
     timelineItem: {
         required: true,
         type: Object,
@@ -13,32 +13,26 @@ const props = defineProps({
 
 })
 
-const hourLinkClasess = [
-    `absolute -top-4 left-1/2 -translate-x-1/2 rounded  px-2 font-mono text-lg`,
-    props.timelineItem.hour === new Date().getHours()
-    ? 'bg-purple-900 font-black text-white'
-    : 'bg-gray-100 text-gray-500'
-]
+
 
 const options = [
-    {value: 1, label: 'Coding'},
-    {value: 2, label: 'Reading'},
-    {value: 3, label: 'Training'},
+    {value: 1, label: 'Работа'},
+    {value: 2, label: 'Отдых'},
+    {value: 3, label: 'Тренировки'},
 ]
 
-const selectedActivityId = ref(1)
+const selectedActivityId = ref(2)
 
 </script>
 
 <template>
 <li class="relative flex flex-col gap-2 border-t border-gray-300 py-10 px-4">
-    <a href="#" :class="hourLinkClasess">
-        {{ timelineItem.hour }}:00
-    </a>
+    
+    <TimeLineHour :hour="timelineItem.hour"/>
     <BaseSelect 
         :selected="selectedActivityId" 
         :options="options" 
-        placeholder="Rest"
+        placeholder="Не выбранно"
         @select="selectedActivityId = $event"
     />
     <!-- <div class="flex gap-2">
