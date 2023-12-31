@@ -4,6 +4,18 @@ export  function isPageValid(page) {
     return Object.keys(NAV_ITEMS).includes(page)
   }
 
-export function isTimeLineValid({ hour }) {
+export function validateTimeLineItems(timeLineItems) {
+    return timeLineItems.every(isTimeLineItemValid)
+  }
+
+
+export function isTimeLineItemValid({ hour }) {
     return typeof hour === 'number' && hour >= MIDNIGHT_HOUR && hour < HOURS_IN_DAY 
  }
+
+ export function validateSelectOptions(options) {
+    return options.every(isSelectOptionValid)
+ }
+function isSelectOptionValid({ value, label }) {
+    return  typeof value === 'number' && typeof label === 'string'
+}

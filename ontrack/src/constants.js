@@ -1,8 +1,8 @@
 import { ClockIcon, ListBulletIcon, ChartBarIcon} from '@heroicons/vue/24/outline'
 
-export const PAGE_TIMELINE = 'time'
-export const PAGE_ACTIVITIES = 'active'
-export const PAGE_PROGRESS = 'progres'
+export const PAGE_TIMELINE = 'время'
+export const PAGE_ACTIVITIES = 'активность'
+export const PAGE_PROGRESS = 'прогресс'
 export const MIDNIGHT_HOUR = 0
 export const HOURS_IN_DAY = 24
 
