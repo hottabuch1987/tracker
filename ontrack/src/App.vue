@@ -14,6 +14,9 @@ const currentPage = ref(normalizePageHash())
 
 const timelineItems = generateTimeLineItems()
 
+const activities = ['Работа', 'Отдых', 'Тренировки' ]
+
+
 function goTo(page) {
     currentPage.value = page
 }
@@ -25,7 +28,7 @@ function goTo(page) {
     @navigate="goTo($event)"
  />
  <main class="flex flex-grow flex-col">
-    <TheActivites v-show="currentPage === PAGE_ACTIVITIES"/>
+    <TheActivites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities"/>
     <TheProgres v-show="currentPage === PAGE_PROGRESS"/>
     <TheTimeLine v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems"/>
 </main>
