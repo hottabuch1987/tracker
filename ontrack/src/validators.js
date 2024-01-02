@@ -28,7 +28,7 @@ export function validateSelectOptions(options) {
     return options.every(isSelectOptionValid)
  }
 function isSelectOptionValid({ value, label }) {
-    return  isNumber(value) && isString(label)
+    return  isNumber(value) && isNotEmptyString(label)
 }
 
 export function isUndefineOrNull(value){
@@ -54,7 +54,7 @@ function isNull(value) {
   return value === null
 }
 
-function isUndefined(value) {
+export function isUndefined(value) {
   return value === undefined
 }
 

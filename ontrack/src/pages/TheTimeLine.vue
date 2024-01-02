@@ -1,6 +1,6 @@
 <script setup>
 import TimeLineItem from '@/components/TimeLineItem.vue'
-import { validateTimeLineItems } from '../validators'
+import { validateTimeLineItems, validateSelectOptions } from '../validators'
 
 
 defineProps({
@@ -8,6 +8,11 @@ defineProps({
         required: true,
         type: Array,
         validator: validateTimeLineItems
+    },
+    activitySelectOptions: {
+        required: true,
+        type: Array,
+        validator: validateSelectOptions
     }
 
 })
@@ -21,6 +26,7 @@ defineProps({
                 v-for="timelineItem in timelineItems" 
                 :key="timelineItem.hour"
                 :timeline-item="timelineItem"
+                :activity-select-options="activitySelectOptions"
             />
         </ul>
     </div>

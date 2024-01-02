@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { isTimeLineItemValid } from '../validators'
+import { isTimeLineItemValid, validateSelectOptions } from '../validators'
 import BaseSelect from './BaseSelect.vue';
 import TimeLineHour from './TimeLineHour.vue';
 
@@ -9,19 +9,20 @@ defineProps({
         required: true,
         type: Object,
         validator: isTimeLineItemValid
+    },
+    activitySelectOptions: {
+        required: true,
+        type: Array,
+        validator: validateSelectOptions
     }
 
 })
 
 
 
-const options = [
-    {value: 1, label: 'Работа'},
-    {value: 2, label: 'Отдых'},
-    {value: 3, label: 'Тренировки'},
-]
 
-const selectedActivityId = ref(2)
+
+const selectedActivityId = ref(0)
 
 </script>
 
@@ -31,20 +32,11 @@ const selectedActivityId = ref(2)
     <TimeLineHour :hour="timelineItem.hour"/>
     <BaseSelect 
         :selected="selectedActivityId" 
-        :options="options" 
+        :options="activitySelectOptions" 
         placeholder="Не выбранно"
         @select="selectedActivityId = $event"
     />
-    <!-- <div class="flex gap-2">
-        
-        <select name="" id="" class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl">
-            <option selected disabled value="">Rest</option>
-            <option v-for="{value, label} in options" :key="value" :value="value">
-                {{ label }}
-            </option>
-        </select>
-    </div> -->
-    
+ 
 </li>
         
 </template>

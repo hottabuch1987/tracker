@@ -18,3 +18,8 @@ export function generateTimeLineItems() {
     }
     return timelineItems
 }
+
+export function genereteActivitySelectOptions(activities) {
+  return activities.map((label, value) => 
+    ({label, value}))
+}
