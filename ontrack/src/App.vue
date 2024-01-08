@@ -24,6 +24,9 @@ function goTo(page) {
 function deleteActivity(activity){
     activities.value.splice(activities.value.indexOf(activity), 1)
 }
+function createActivity(activity) {
+    activities.value.push(activity)
+}
 </script>
 
 <template>
@@ -32,7 +35,7 @@ function deleteActivity(activity){
     @navigate="goTo($event)"
  />
  <main class="flex flex-grow flex-col">
-    <TheActivites v-show="currentPage === PAGE_ACTIVITIES"  :activities="activities" @delete-activity="deleteActivity"/>
+    <TheActivites v-show="currentPage === PAGE_ACTIVITIES"  :activities="activities" @create-activity="createActivity" @delete-activity="deleteActivity"/>
     <TheProgres v-show="currentPage === PAGE_PROGRESS"/>
     <TheTimeLine v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems" :activity-select-options="activitySelectOptions" />
 </main>
