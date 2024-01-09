@@ -11,25 +11,13 @@ export function normalizePageHash() {
   }
 
 export function genereteActivities() {
-  return [
-    {
-        id: id(),
-        name: 'Работа',
-        seondsToComplete: 0 * SECONDS_IN_HOUR
-    },
-    {
-        id: id(),
-        name: 'Тренировки',
-        seondsToComplete: 1 * SECONDS_IN_HOUR
-    },
-    {
-        id: id(),
-        name: 'Отдых',
-        seondsToComplete: 2 * SECONDS_IN_HOUR
-    },
-  ]
-}
+  return ['Работа', 'Отдых', 'Тренировки'].map((name, hours) => ({
+    id: id(),
+    name,
+    seondsToComplete: hours * SECONDS_IN_HOUR
+  }))
 
+}
 export function id() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
