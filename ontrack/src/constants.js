@@ -5,6 +5,7 @@ export const PAGE_ACTIVITIES = 'активность'
 export const PAGE_PROGRESS = 'прогресс'
 export const MIDNIGHT_HOUR = 0
 export const HOURS_IN_DAY = 24
+export const SECONDS_IN_HOUR = 3600
 
 export const NAV_ITEMS = {
   [PAGE_TIMELINE]: ClockIcon,
